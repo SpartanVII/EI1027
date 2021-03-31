@@ -1,5 +1,6 @@
 package es.uji.ei1027.clubesportiu.dao;
 
+import es.uji.ei1027.clubesportiu.model.Classificacio;
 import es.uji.ei1027.clubesportiu.model.Nadador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 @Repository // En Spring els DAOs van anotats amb @Repository
-public class NadadorDAO {
+public class NadadorDao {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -30,15 +31,19 @@ public class NadadorDAO {
     }
 
     /* Esborra el nadador de la base de dades */
+    public void deleteNadador(String nadador) {
+        jdbcTemplate.update("DELETE FROM Nadador WHERE nom='"+nadador+"'");
+    }
+
     public void deleteNadador(Nadador nadador) {
-        jdbcTemplate.update("DELETE FROM Nadador WHERE Nom_nadador= '?';",nadador.getNom());
+        jdbcTemplate.update("DELETE FROM Nadador WHERE nom='"+nadador.getNom()+"'");
     }
 
     /* Actualitza els atributs del nadador
        (excepte el nom, que és la clau primària) */
     public void updateNadador(Nadador nadador) {
-        jdbcTemplate.update("UPDATE Nadador SET edat='?', genere='?',num_federat='?', pais='?' WHERE nom='?';"
-                ,nadador.getEdat(),nadador.getGenere(),nadador.getNumFederat(),nadador.getPais(),nadador.getNom());
+        jdbcTemplate.update("UPDATE Nadador SET edat='"+nadador.getEdat()+"', genere='"+nadador.getGenere()+"',num_federat='"+nadador.getNumFederat()
+                +"', pais='"+nadador.getPais()+"' WHERE nom='"+nadador.getNom()+"';");
     }
 
     /* Obté el nadador amb el nom donat. Torna null si no existeix. */
@@ -62,4 +67,7 @@ public class NadadorDAO {
             return new ArrayList<Nadador>();
         }
     }
+
+
+
 }

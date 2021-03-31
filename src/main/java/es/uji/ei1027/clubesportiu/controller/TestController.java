@@ -2,7 +2,7 @@
 package es.uji.ei1027.clubesportiu.controller;
 
 import es.uji.ei1027.clubesportiu.categoria.Categoria;
-import es.uji.ei1027.clubesportiu.dao.NadadorDAO;
+import es.uji.ei1027.clubesportiu.dao.NadadorDao;
 import es.uji.ei1027.clubesportiu.model.Nadador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +33,7 @@ public class TestController {
     }
 
     @Autowired
-    NadadorDAO nadadorDao;
+    NadadorDao nadadorDao;
 
     @RequestMapping("/provaNadador")
     public String provaUnNadador(Model model) {

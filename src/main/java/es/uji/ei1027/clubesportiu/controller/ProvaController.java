@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/prova")
 public class ProvaController {
-
     private ProvaDao provaDao;
 
     @Autowired
