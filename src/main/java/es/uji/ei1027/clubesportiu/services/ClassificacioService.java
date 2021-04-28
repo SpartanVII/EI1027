@@ -8,4 +8,5 @@ import java.util.List;
 public interface ClassificacioService {
     Map<String, List<Nadador>> getClassificationByCountry(String prova);
     Map<String, List<Nadador>> getClassificationByProva(String country);
+    List<String> getNadadorsElegiblesPerProva(String prova);
 }

@@ -15,6 +15,7 @@
         <th scope="col">Descripcio</th>
         <th scope="col">Nadadors</th>
         <th scope="col">Data</th>
+        <th scope="col">Classsificacions</th>
         <th></th>
         <th></th>
     </tr>
@@ -25,7 +26,9 @@
         <td th:text="${prova.tipus}"></td>
         <td th:text="${prova.descripcio}"></td>
         <td><a th:href="@{/classificacio/perpais/{nomprova}(nomprova=${prova.nom})}">Per pais</a></td>
-        <td th:text="${prova.data}"></td>
+        <td th:text="${#temporals.format(prova.data,'dd/MM/yyyy')}"></td>
+        <td><a th:href="@{/classificacio/addPerProva/{nom}(nom=${prova.nom})}">Gestionar classificacions</a> ①
+        </td>
 
         <td><a th:href="@{/prova/update/{nom}(nom=${prova.nom})}"><button type="button" class="btn btn-warning">Edita</button></a>
         </td>
