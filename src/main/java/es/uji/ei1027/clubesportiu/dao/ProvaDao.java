@@ -35,10 +35,14 @@ public class ProvaDao {
         jdbcTemplate.update("DELETE FROM Prova WHERE Nom_prova= '?';",prova.getNom());
     }
 
+    public void deleteProva(String nom) {
+        jdbcTemplate.update("DELETE FROM Prova WHERE Nom_prova= '?';",nom);
+    }
+
     /* Actualitza els atributs del nadador
        (excepte el nom, que és la clau primària) */
     public void updateProva(Prova prova) {
-        jdbcTemplate.update("UPDATE Nadador SET descripcio='?', tipus='?',data='?' WHERE nom='?';"
+        jdbcTemplate.update("UPDATE Prova SET descripcio='?', tipus='?',data='?' WHERE nom='?';"
                 ,prova.getDescripcio(), prova.getTipus(), prova.getData(),prova.getNom());
     }
 

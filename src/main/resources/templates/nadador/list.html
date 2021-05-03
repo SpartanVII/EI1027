@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}">
 <head>
     <title>Gestionar Nadadors</title>
     <meta charset="UTF-8" />
@@ -8,6 +10,7 @@
 
 </head>
 <body>
+<div layout:fragment="content">
 <h1>Llista de Nadadors</h1>
 <div th:if="${#lists.isEmpty(nadadors)}">
     No hi ha nadadors en la base de dades
@@ -42,5 +45,6 @@
     </tbody>
 </table>
 <a href="add"><button type="button" class="btn btn-success">Afegeix Nadador</button></a>
+</div>
 </body>
 </html>

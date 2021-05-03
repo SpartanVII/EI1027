@@ -33,7 +33,7 @@ public class ProvaController {
     }
 
     @RequestMapping(value="/update/{nom}", method = RequestMethod.GET)
-    public String editNadador(Model model, @PathVariable String nom) {
+    public String editProva(Model model, @PathVariable String nom) {
         model.addAttribute("prova", provaDao.getProva(nom));
         List<String> typeList = Arrays.asList("Individual", "Grupal");
         model.addAttribute("typeList", typeList);
@@ -54,7 +54,7 @@ public class ProvaController {
 
     @RequestMapping(value="/add")
     public String addProva(Model model) {
-        model.addAttribute("prova", new Nadador());
+        model.addAttribute("prova", new Prova());
         return "prova/add";
     }
 
@@ -65,6 +65,12 @@ public class ProvaController {
             return "prova/add";
         provaDao.addProva(prova);
         return "redirect:list";
+    }
+
+    @RequestMapping(value="/delete/{nom}")
+    public String processDelete(@PathVariable String nom) {
+        provaDao.deleteProva(nom);
+        return "redirect:../list";
     }
 
 }
