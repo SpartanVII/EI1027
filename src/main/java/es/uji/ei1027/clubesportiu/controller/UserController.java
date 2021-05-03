@@ -24,12 +24,11 @@ public class UserController {
     public String listSocis(HttpSession session, Model model) {
         if (session.getAttribute("user") == null)
         {
-
+            model.addAttribute("nextUrl","/user/list");
             model.addAttribute("user", new UserDetails());
             return "login";
         }
         model.addAttribute("users", userDao.listAllUsers());
-        model.addAttribute("nextUrl","user/list");
         return "user/list";
     }
 }
